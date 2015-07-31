@@ -1,5 +1,19 @@
+flowers = [{
+  name: 'marguerite',
+  petalColor: [255, 255, 255],
+  pistilColor: [232, 229, 60]
+}, {
+  name: 'violette',
+  petalColor: [211, 149, 246],
+  pistilColor: [252, 255, 180]
+}]
+
 function log(title, message) {
   $("#message").append("<div class=\"alert alert-success\"> <strong>" + title + " : </strong>" + message + "</div>");
+}
+
+function getRandomFlower() {
+  return flowers[getRandomInt(0, flowers.length - 1)]
 }
 
 function newGarden(gardenHeight, gardenWidth) {
@@ -13,15 +27,13 @@ function newGarden(gardenHeight, gardenWidth) {
   return garden;
 }
 
-function plantFlower(garden, line, column) {
-  console.log("on plante en ", line, column)
-  var petale = [255, 255, 255];
-  var centre = [232, 229, 60]
-  garden[line + 1][column] = petale;
-  garden[line - 1][column] = petale;
-  garden[line][column] = centre;
-  garden[line][column + 1] = petale;
-  garden[line][column - 1] = petale;
+function plantFlower(garden, line, column, flower) {
+  console.log("on plante une", flower.name)
+  garden[line + 1][column] = flower.petalColor;
+  garden[line - 1][column] = flower.petalColor;
+  garden[line][column] = flower.pistilColor;;
+  garden[line][column + 1] = flower.petalColor;
+  garden[line][column - 1] = flower.petalColor;
 }
 
 function getRandomInt(min, max) {
@@ -58,10 +70,10 @@ $(function() {
   var gardenWidth = 10;
   var nbFlower = 4;
   var data = newGarden(gardenHeight, gardenWidth)
-
   for (i = 0; i < nbFlower; i++) {
-    plantFlower(data, getRandomInt(2, gardenHeight - 2), getRandomInt(2, gardenWidth - 2))
+    plantFlower(data, getRandomInt(2, gardenHeight - 2), getRandomInt(2, gardenWidth - 2), getRandomFlower())
   }
+
 
   var width = 1000,
     pixelSize = 10;
