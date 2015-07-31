@@ -7,7 +7,7 @@ function newGarden(gardenHeight, gardenWidth) {
   for (i = 0; i < gardenHeight; i++) {
     garden[i] = []
     for (j = 0; j < gardenWidth; j++) {
-      garden[i][j] = 0;
+      garden[i][j] = [124, 84, 32];
     }
   }
   return garden;
@@ -15,11 +15,13 @@ function newGarden(gardenHeight, gardenWidth) {
 
 function plantFlower(garden, line, column) {
   console.log("on plante en ", line, column)
-  garden[line + 1][column] = 1;
-  garden[line - 1][column] = 1;
-  garden[line][column] = 1;
-  garden[line][column + 1] = 1;
-  garden[line][column - 1] = 1;
+  var petale = [255, 255, 255];
+  var centre = [232, 229, 60]
+  garden[line + 1][column] = petale;
+  garden[line - 1][column] = petale;
+  garden[line][column] = centre;
+  garden[line][column + 1] = petale;
+  garden[line][column - 1] = petale;
 }
 
 function getRandomInt(min, max) {
@@ -52,8 +54,8 @@ $(function() {
   log("cost apres", cost(theta, X, y));
   log("hypo", hypothesis(theta, [10, 1, 1]));
 
-  var gardenHeight = 50;
-  var gardenWidth = 50;
+  var gardenHeight = 10;
+  var gardenWidth = 10;
   var nbFlower = 4;
   var data = newGarden(gardenHeight, gardenWidth)
 
@@ -88,7 +90,7 @@ $(function() {
     .attr("width", pixelSize)
     .attr("height", pixelSize)
     .style("fill", function(d, i, j) {
-      return d == 0 ? 'rgb(124,84,32)' : 'rgb(32,124,84)';
+      return 'rgb(' + d[0] + ',' + d[1] + ',' + d[2] + ')'
     });
 
 });
