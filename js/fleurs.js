@@ -1,12 +1,43 @@
 flowers = [{
-  name: 'marguerite',
-  petalColor: [255, 255, 255],
-  pistilColor: [232, 229, 60]
-}, {
-  name: 'violette',
-  petalColor: [211, 149, 246],
-  pistilColor: [252, 255, 180]
-}]
+    name: 'marguerite',
+    petalColor: [255, 255, 255],
+    pistilColor: [232, 229, 60]
+  }, {
+    name: 'violette',
+    petalColor: [211, 149, 246],
+    pistilColor: [252, 255, 180]
+  }, {
+    name: 'lysimaque',
+    petalColor: [228, 212, 13],
+    pistilColor: [190, 149, 69]
+  }, {
+    name: 'myosotis',
+    petalColor: [112, 165, 217],
+    pistilColor: [255, 255, 128]
+  }, {
+    name: 'crocus',
+    petalColor: [143, 106, 212],
+    pistilColor: [254, 169, 75]
+  }, {
+    name: 'jacinthe-violette',
+    petalColor: [140, 142, 190],
+    pistilColor: [132, 132, 185]
+  }, {
+    name: 'verveine',
+    petalColor: [180, 210, 114],
+    pistilColor: [197, 221, 147]
+  }, {
+    name: 'oeillets',
+    petalColor: [255, 255, 255],
+    pistilColor: [191, 0, 42]
+  }, {
+    name: 'crocosmia',
+    petalColor: [255, 40, 73],
+    pistilColor: [254, 229, 66]
+  }
+
+
+]
 
 function log(title, message) {
   $("#message").append("<div class=\"alert alert-success\"> <strong>" + title + " : </strong>" + message + "</div>");
@@ -66,9 +97,9 @@ $(function() {
   log("cost apres", cost(theta, X, y));
   log("hypo", hypothesis(theta, [10, 1, 1]));
 
-  var gardenHeight = 10;
-  var gardenWidth = 10;
-  var nbFlower = 4;
+  var gardenHeight = 50;
+  var gardenWidth = 50;
+  var nbFlower = 200;
   var data = newGarden(gardenHeight, gardenWidth)
   for (i = 0; i < nbFlower; i++) {
     plantFlower(data, getRandomInt(2, gardenHeight - 2), getRandomInt(2, gardenWidth - 2), getRandomFlower())
